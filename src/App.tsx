@@ -12,8 +12,9 @@ import Dashboard from "./pages/dahboard";
 import Loader from "./components/Loader";
 import { Toaster } from "react-hot-toast";
 import UnauthorizedPage from "./pages/auth/unauthorized";
-import PrivateRoute from "./routes/PrivateRoute";
-import PublicRoute from "./routes/PublicRoute";
+import AuthApp from "./modules/auth/AuthApp";
+// import PrivateRoute from "./routes/PrivateRoute";
+// import PublicRoute from "./routes/PublicRoute";
 
 store.subscribe(() => console.log(store.getState(), "getSTate"));
 
@@ -27,12 +28,7 @@ function App() {
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <Routes>
-            {/* <PrivateRoute path="contact" element={<Contact />} />
-            <PrivateRoute path="/" element={<Dashboard />} />
-            <PublicRoute path="/login" element={<Login />} />
-            <Route path="/unauthorized" element={<UnauthorizedPage />} /> */}
-
+          {/* <Routes>
             <Route
               path="/login"
               element={<PublicRoute element={<Login />} path="/login" />}
@@ -58,11 +54,17 @@ function App() {
               }
             />
             <Route path="/unauthorized" element={<UnauthorizedPage />} />
-            {/* Add other public routes using Route and PublicRoute */}
             <Route
               path="/"
               element={<PrivateRoute element={<Dashboard />} path="/" />}
             />
+          </Routes> */}
+
+          <Routes>
+            <Route path="" element={<Dashboard />} />
+            <Route path="/auth/*" element={<AuthApp />}></Route>
+            <Route path="/*" element={<Module2Routes />}></Route>
+            <Route path="/unauthorized" element={<UnauthorizedPage />} />
           </Routes>
 
           <Loader />
@@ -75,3 +77,14 @@ function App() {
 }
 
 export default App;
+
+export const Module2Routes = () => {
+  return (
+    <Routes>
+      <Route path="">
+        <Route path="contact" element={<Contact />} />
+        <Route path="dashboard" element={<Dashboard />} />
+      </Route>
+    </Routes>
+  );
+};

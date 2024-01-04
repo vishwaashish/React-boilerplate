@@ -112,7 +112,7 @@ export const isAuthenticatedSelector = (state: RootState) =>
   state.auth.isAuthenticated;
 
 export const userRolesSelector = (state: RootState) =>
-  state.auth.user?.roles || [];
+  state.auth.user?.role || [];
 
 export const getIsAuthenticated = createSelector(
   isAuthenticatedSelector,

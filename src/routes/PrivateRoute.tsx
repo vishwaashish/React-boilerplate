@@ -31,7 +31,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
     return <Navigate to="/login" />;
   }
 
-  const hasRequiredRoles = requiredRoles.every((role) =>
+  const hasRequiredRoles = requiredRoles.every((role:string) =>
     userRoles.includes(role)
   );
 
