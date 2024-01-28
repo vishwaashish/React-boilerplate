@@ -6,7 +6,6 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { initializeUserFromToken } from "./context/authSlice";
 import { store } from "./context/store";
-import Login from "./pages/auth/login";
 import Contact from "./pages/contact";
 import Dashboard from "./pages/dahboard";
 import Loader from "./components/Loader";
@@ -28,7 +27,7 @@ function App() {
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          {/* <Routes>
+{/* <Routes>
             <Route
               path="/login"
               element={<PublicRoute element={<Login />} path="/login" />}
